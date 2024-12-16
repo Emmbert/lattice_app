@@ -1,0 +1,39 @@
+{% extends "lattice_visualizer/base.html" %}
+
+{% block content %}
+    <!-- Centered Title with Modern Style -->
+    <!-- Input Form for Two Matrices with modern card design -->
+    <div class="form-container">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row matrix-form justify-content-center">
+                <div class="col-md-3 matrix">
+                    <h3 class="matrix-title">Basis Matrix 1</h3>
+                    <div class="matrix-grid">
+                        <div class="matrix-cell">{{ form.matrix1_00 }}</div>
+                        <div class="matrix-cell">{{ form.matrix1_10 }}</div>
+                        <div class="matrix-cell">{{ form.matrix1_01 }}</div>
+                        <div class="matrix-cell">{{ form.matrix1_11 }}</div>
+                    </div>
+                </div>
+                <div class="col-md-3 matrix">
+                    <h3 class="matrix-title">Basis Matrix 2</h3>
+                    <div class="matrix-grid">
+                        <div class="matrix-cell">{{ form.matrix2_00 }}</div>
+                        <div class="matrix-cell">{{ form.matrix2_10 }}</div>
+                        <div class="matrix-cell">{{ form.matrix2_01 }}</div>
+                        <div class="matrix-cell">{{ form.matrix2_11 }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="button-container">
+                <button type="submit" class="btn btn-primary">Start</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Centered Description and Results -->
+    {% if figures %}
+        {% include "lattice_visualizer/results.html" %}
+    {% endif %}
+{% endblock %}

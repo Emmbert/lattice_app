@@ -1,0 +1,23 @@
+{% block results %}
+    {% for obj in figures %}
+        {% if obj.description %}
+            <div class="result-container">
+                <div class="description">
+                    <p>{{ obj.description }}</p>
+                </div>
+                <div class="image-comparison">
+                    {% if obj.plot1 %}
+                        <div>
+                            <img src="data:image/png;base64,{{ obj.plot1 }}" alt="Matrix {{ forloop.counter }} Visualization" />
+                        </div>
+                    {% endif %}
+                    {% if obj.plot2 %}
+                        <div>
+                            <img src="data:image/png;base64,{{ obj.plot2 }}" alt="Matrix {{ forloop.counter }} Visualization" />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
